@@ -8,7 +8,9 @@ package fr.ri;
 import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,8 +22,12 @@ public class StartApp {
     
     public static void main(String[] args) {
         try {
-            Connection dbConn = DriverManager.getConnection("jdbc:derby://localhost:1527/DB_PROGRAMMEURS_RI");
+            Connection dbConn = DriverManager.getConnection("jdbc:derby://localhost:1527/DB_PROGRAMMEURS_RI","adminRI","admin");
+            Statement stmnt = dbConn.createStatement();
+            ResultSet rt = stmnt.executeQuery("SELECT NOM,PRENOM,PSEUDO from PROGRAMMEUR");
+            
         } catch (SQLException ex) {
+            System.out.println("ERREUR SQL");
             Logger.getLogger(StartApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
