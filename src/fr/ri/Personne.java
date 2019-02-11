@@ -11,4 +11,8 @@ package fr.ri;
  */
 public class Personne {
     
+    String nom;
+    String prenom;
+    
+    
 }
