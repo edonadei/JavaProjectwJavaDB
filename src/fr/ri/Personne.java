@@ -14,5 +14,10 @@ public class Personne {
     String nom;
     String prenom;
     String adresse;
-    
+    String pseudo;
+    String responsable;
+    String hobby;
+    int dateNaissance;
+    int salaire;
+    int prime;
 }
