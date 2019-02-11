@@ -29,6 +29,13 @@ public class StartApp {
             while(rt.next())
             {
                 Programmeur prog = new Programmeur();
+                Menu menu = new Menu();
+                
+                
+                
+                System.out.println(menu.choisir());       //C'est un test
+                System.out.println("STOP");
+                
                 
                 prog.setNom(rt.getString("NOM"));
                 prog.setPrenom(rt.getString("PRENOM"));
