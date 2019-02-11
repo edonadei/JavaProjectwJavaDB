@@ -11,4 +11,14 @@ package fr.ri;
  */
 public class Programmeur {
     
+    String nom;
+    String prenom;
+    String adresse;
+    String pseudo;
+    String responsable;
+    String hobby;
+    int dateNaissance;
+    int salaire;
+    int prime;
+    
 }
