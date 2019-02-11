@@ -22,14 +22,17 @@ public class StartApp {
     
     public static void main(String[] args) {
         try {
-            Connection dbConn = DriverManager.getConnection("jdbc:derby://localhost:1527/DB_PROGRAMMEURS_RI","ADMINRI","admin");
+
+            Connection dbConn = DriverManager.getConnection("jdbc:derby://localhost:1527/RI_L3_JAVA","adm","adm");
             Statement stmnt = dbConn.createStatement();
             ResultSet rt = stmnt.executeQuery("SELECT NOM,PRENOM,PSEUDO from PROGRAMMEUR");
-            
-
+            while(rt.next())
+            {
                 System.out.println(rt.getString("NOM"));
                 System.out.println(rt.getString("PRENOM"));
                 System.out.println(rt.getString("PSEUDO"));
+            }
+            
             
         } catch (SQLException ex) {
             System.out.println("ERREUR SQL");
