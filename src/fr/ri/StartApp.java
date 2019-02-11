@@ -28,9 +28,14 @@ public class StartApp {
             ResultSet rt = stmnt.executeQuery("SELECT NOM,PRENOM,PSEUDO from PROGRAMMEUR");
             while(rt.next())
             {
-                System.out.println(rt.getString("NOM"));
-                System.out.println(rt.getString("PRENOM"));
-                System.out.println(rt.getString("PSEUDO"));
+                Programmeur prog = new Programmeur();
+                
+                prog.setNom(rt.getString("NOM"));
+                prog.setPrenom(rt.getString("PRENOM"));
+                
+                System.out.println(prog.getNom());
+                System.out.println(prog.getPrenom());
+               
             }
             
             
