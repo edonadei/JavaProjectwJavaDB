@@ -5,6 +5,7 @@
  */
 package fr.ri;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -37,4 +38,20 @@ public class UtilityMethods {
         return prog;
     }
     
+    /**
+     * Utilisation d'une boucle for each pour l'affichage d'une ArrayList de programmeurs
+     * @param toPrint 
+     */
+    public void printProgrammeurArrayList(ArrayList<Programmeur> toPrint)
+    {
+        if (toPrint.isEmpty())
+        {
+            System.out.println("Votre recherche n'a trouvé aucun résultat");
+        } else {
+            for (Programmeur p : toPrint)
+            {
+                System.out.println(p.toString());
+            }
+        }
+    }
 }

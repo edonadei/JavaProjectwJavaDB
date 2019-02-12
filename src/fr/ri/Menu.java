@@ -27,6 +27,9 @@ public class Menu {
         this.choix = choix;
     }
     
+    /**
+     * Fonction d'affichage du menu
+     */
     public void afficherMenu()
     {
         System.out.println("$$$$$$$$$$ MENU $$$$$$$$$$ \n" +
@@ -39,7 +42,11 @@ public class Menu {
         "Quel est votre choix ? :");
     }
     
-    public int choisir(){           //Méthode qui permet d'obtenir le choix de l'utilisateur
+    /**
+     * Méthode qui permet d'obtenir le choix de l'utilisateur
+     * @return 
+     */
+    public int choisir(){  
         
         Scanner sc = new Scanner(System.in);
         String numero;
