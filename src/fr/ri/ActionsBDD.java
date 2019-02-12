@@ -27,8 +27,9 @@ public interface ActionsBDD {
      * Modification d'un champ d'un programmeur en base de données en choissant par ID
      * @param champ
      * @param id
+     * @param valeur 
      */
-    void BDDModifierChamp(String champ, int id);
+    void BDDModifierChamp(String champ, int id, String valeur);
 
     /**
      * Generic query to the database, do not return anything, useful for pushing something

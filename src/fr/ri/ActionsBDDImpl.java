@@ -17,7 +17,7 @@ import org.apache.derby.client.am.Connection;
  *
  * @author jeromecoffin
  */
-public class ActionsBDDImpl implements ActionsBDD {
+public class ActionsBDDImpl implements ActionsBDD{
     
     private String bdd_IP;
     private String bdd_id;
@@ -96,17 +96,6 @@ public class ActionsBDDImpl implements ActionsBDD {
      * @param id
      * @return Programmeur
      */
-    @Override
-    public Programmeur BDDQueryByID(int id){
-        /*
-        * Function to query in database by id
-        * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
-        */
-        
-        String query = "SELECT * FROM PROGRAMMEUR where id= $" + id;
-        Programmeur prog = BDDQueryAndReturnProgrammer(query);
-        return prog;
-    }
     
     /**
      * Generic query to the database, do not return anything, useful for pushing something
@@ -150,6 +139,18 @@ public class ActionsBDDImpl implements ActionsBDD {
         return prog;
     }
     
+        @Override
+    public Programmeur BDDQueryByID(int id){
+        /*
+        * Function to query in database by id
+        * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
+        */
+        
+        String query = "SELECT * FROM PROGRAMMEUR where id= $" + id;
+        Programmeur prog = BDDQueryAndReturnProgrammer(query);
+        return prog;
+    }
+    
     /**
      * Ajout d'un programmeur dans la base de données
      * @param prog 
@@ -162,6 +163,7 @@ public class ActionsBDDImpl implements ActionsBDD {
         * INSERT INTO PROGRAMMEUR(NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,ANNAISSANCE,SALAIRE,PRIME) VALUES
         * ('Torvalds','Linus','2 avenue Linux Git','linuxroot','Didier Achvar','Salsa','1969','2170','50')
         */
+        
         String query = "INSERT INTO PROGRAMMEUR(NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,ANNAISSANCE,SALAIRE,PRIME)" + 
                 " VALUES('" + prog.getPrenom() +"','" + prog.getNom()
                 + "','" + prog.getAdresse() +"','" + prog.getPseudo()
@@ -175,11 +177,17 @@ public class ActionsBDDImpl implements ActionsBDD {
      * Modification d'un champ d'un programmeur en base de données en choissant par ID
      * @param champ
      * @param id 
+     * @param valeur 
      */
     @Override
-    public void BDDModifierChamp(String champ, int id)
+    public void BDDModifierChamp(String champ, int id, String valeur)
     {
+        /*
+        Template: UPDATE PROGRAMMEUR SET PRIME = '11' WHERE id =2 ;
+        */
         
+        String query = "UPDATE PROGRAMMEUR SET " + champ +" = '" + valeur + "' WHERE id ="+ id;
+        BDDQuery(query);
     }
     
     /**
@@ -189,6 +197,13 @@ public class ActionsBDDImpl implements ActionsBDD {
     @Override
     public void BDDDeleteProgrammeur(int id)
     {
+        /*
+        Template: DELETE FROM `utilisateur`
+        *         WHERE `id` = 1
+        */
         
+        String query = "DELETE FROM PROGRAMMEUR " + 
+                "WHERE id =" + id;
+        BDDQuery(query);
     }
 }
