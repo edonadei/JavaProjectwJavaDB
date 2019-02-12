@@ -17,7 +17,7 @@ import org.apache.derby.client.am.Connection;
  *
  * @author jeromecoffin
  */
-public class ActionsBDD {
+public class ActionsBDDImpl implements ActionsBDD {
     
     private String bdd_IP;
     private String bdd_id;
@@ -26,26 +26,32 @@ public class ActionsBDD {
     private Statement st;
     private ResultSet rs;
 
+    @Override
     public String getBdd_IP() {
         return bdd_IP;
     }
 
+    @Override
     public void setBdd_IP(String bdd_IP) {
         this.bdd_IP = bdd_IP;
     }
 
+    @Override
     public String getBdd_id() {
         return bdd_id;
     }
 
+    @Override
     public void setBdd_id(String bdd_id) {
         this.bdd_id = bdd_id;
     }
 
+    @Override
     public String getBdd_pwd() {
         return bdd_pwd;
     }
 
+    @Override
     public void setBdd_pwd(String bdd_pwd) {
         this.bdd_pwd = bdd_pwd;
     }
@@ -56,7 +62,7 @@ public class ActionsBDD {
      * @param bdd_id
      * @param bdd_pwd 
      */
-    public ActionsBDD(String bdd_IP, String bdd_id, String bdd_pwd) {
+    public ActionsBDDImpl(String bdd_IP, String bdd_id, String bdd_pwd) {
         this.bdd_IP = bdd_IP;
         this.bdd_id = bdd_id;
         this.bdd_pwd = bdd_pwd;
@@ -65,14 +71,14 @@ public class ActionsBDD {
             this.dbconn = (Connection) DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd); 
         this.st = dbconn.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(ActionsBDD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     /**
      * Default constructor, with local IP for JDBC
      */
-    public ActionsBDD() {
+    public ActionsBDDImpl() {
         this.bdd_IP = "jdbc:derby://localhost:1527/RI_L3_JAVA";
         this.bdd_id = "adm";
         this.bdd_pwd = "adm";
@@ -81,7 +87,7 @@ public class ActionsBDD {
             this.dbconn = (Connection) DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd); 
         this.st = dbconn.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(ActionsBDD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -90,6 +96,7 @@ public class ActionsBDD {
      * @param id
      * @return Programmeur
      */
+    @Override
     public Programmeur BDDRequestByID(int id){
         /*
         * Function to query in database by id
@@ -105,12 +112,13 @@ public class ActionsBDD {
      * Generic query to the database, do not return anything, useful for pushing something
      * @param query 
      */
+    @Override
     public void BDDQuery(String query)
     {
         try {
         rs = st.executeQuery(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ActionsBDD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -119,6 +127,7 @@ public class ActionsBDD {
      * @param query
      * @return Programmeur
      */
+    @Override
     public Programmeur BDDQueryAndReturnProgrammer(String query)
     {
         Programmeur prog = new Programmeur();
@@ -136,7 +145,7 @@ public class ActionsBDD {
                 prog.setResponsable(rs.getString("RESPONSABLE"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ActionsBDD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return prog;
     }
