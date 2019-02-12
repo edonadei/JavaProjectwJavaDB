@@ -97,7 +97,7 @@ public class ActionsBDDImpl implements ActionsBDD {
      * @return Programmeur
      */
     @Override
-    public Programmeur BDDRequestByID(int id){
+    public Programmeur BDDQueryByID(int id){
         /*
         * Function to query in database by id
         * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
@@ -150,12 +150,36 @@ public class ActionsBDDImpl implements ActionsBDD {
         return prog;
     }
     
-    // Ajout d'un programmeur dans la BDD
+    /**
+     * Ajout d'un programmeur dans la base de données
+     * @param prog 
+     */
+    @Override
+    public void BDDAddProgrammeur(Programmeur prog)
+    {
+        
+    }
     
-    // Modifier le salaire d'un programmeur
+    /**
+     * Modification d'un champ d'un programmeur en base de données en choissant par ID
+     * @param champ
+     * @param id 
+     */
+    @Override
+    public void BDDModifierChamp(String champ, int id)
+    {
+        
+    }
     
-    // Supprimer un programmeur
-    
+    /**
+     * Supprimer un programmeur dans la base de données en le choisissant par ID
+     * @param id 
+     */
+    @Override
+    public void BDDDeleteProgrammeur(int id)
+    {
+        
+    }
     
   
     
