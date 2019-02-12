@@ -7,7 +7,10 @@ package fr.ri;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.derby.client.am.Connection;
 
 /**
@@ -52,8 +55,12 @@ public class BDDMethods {
         this.bdd_id = bdd_id;
         this.bdd_pwd = bdd_pwd;
         
-        java.sql.Connection dbConn = DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd);
-        Statement stmnt = dbConn.createStatement();
+        try {
+            this.dbconn = (Connection) DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd); 
+        this.st = dbconn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(BDDMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public BDDMethods() {
@@ -61,24 +68,27 @@ public class BDDMethods {
         this.bdd_id = "adm";
         this.bdd_pwd = "adm";
         
-        java.sql.Connection dbConn = DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd);
-        Statement stmnt = dbConn.createStatement();
+        try {
+            this.dbconn = (Connection) DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd); 
+        this.st = dbconn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(BDDMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     // Requete par ID
-    public BDDRequestByID(Statement stmnt, int id){
+    public Programmeur BDDRequestByID(Statement stmnt, int id){
+        Programmeur prog = new Programmeur();
+        try {
         rs = stmnt.executeQuery("SELECT * FROM PROGRAMMEUR where id= $id");
-        
-        while(rs.next()){
-            Programmeur prog = new Programmeur();
-            prog.setNom(rs.getString("NOM"));
-            prog.setPrenom(rs.getString("PRENOM"));
-                
-            System.out.println(prog.getNom());
-            System.out.println(prog.getPrenom());
-            
-            
+            while(rs.next()){
+                prog.setNom(rs.getString("NOM"));
+                prog.setPrenom(rs.getString("PRENOM"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BDDMethods.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return prog;
     }
     
     // Requete par prenom
