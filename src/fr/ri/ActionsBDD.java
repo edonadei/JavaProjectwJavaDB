@@ -5,6 +5,8 @@
  */
 package fr.ri;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Emrick-PC-Portable
@@ -42,14 +44,14 @@ public interface ActionsBDD {
      * @param query
      * @return Programmeur
      */
-    Programmeur BDDQueryAndReturnProgrammer(String query);
+    ArrayList<Programmeur> BDDQueryAndReturnProgrammer(String query);
 
     /**
      * Query in JDBC with an ID, and return the programmeur
      * @param id
      * @return Programmeur
      */
-    Programmeur BDDQueryByID(int id);
+    ArrayList<Programmeur> BDDQueryByID(int id);
 
     String getBdd_IP();
 
@@ -58,7 +60,7 @@ public interface ActionsBDD {
     String getBdd_pwd();
 
     void setBdd_IP(String bdd_IP);
-
+    
     void setBdd_id(String bdd_id);
 
     void setBdd_pwd(String bdd_pwd);

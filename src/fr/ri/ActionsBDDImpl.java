@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.derby.client.am.Connection;
@@ -117,12 +118,13 @@ public class ActionsBDDImpl implements ActionsBDD{
      * @return Programmeur
      */
     @Override
-    public Programmeur BDDQueryAndReturnProgrammer(String query)
+    public ArrayList<Programmeur> BDDQueryAndReturnProgrammer(String query)
     {
-        Programmeur prog = new Programmeur();
+        ArrayList<Programmeur> listOfProgrammeurs = new ArrayList<>();
         try {
         rs = st.executeQuery(query);
             while(rs.next()){
+                Programmeur prog = new Programmeur();
                 prog.setNom(rs.getString("NOM"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setAdresse(rs.getString("ADRESSE"));
@@ -132,23 +134,24 @@ public class ActionsBDDImpl implements ActionsBDD{
                 prog.setPrime(Integer.parseInt(rs.getString("SALAIRE")));
                 prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
+                listOfProgrammeurs.add(prog);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return prog;
+        return listOfProgrammeurs;
     }
     
         @Override
-    public Programmeur BDDQueryByID(int id){
+    public ArrayList<Programmeur> BDDQueryByID(int id){
         /*
         * Function to query in database by id
         * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
         */
         
         String query = "SELECT * FROM PROGRAMMEUR where id= $" + id;
-        Programmeur prog = BDDQueryAndReturnProgrammer(query);
-        return prog;
+        ArrayList<Programmeur> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
+        return listOfProgrammeurs;
     }
     
     /**
