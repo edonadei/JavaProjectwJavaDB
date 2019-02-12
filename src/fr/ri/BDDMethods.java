@@ -77,13 +77,35 @@ public class BDDMethods {
     }
     
     // Requete par ID
-    public Programmeur BDDRequestByID(Statement stmnt, int id){
+    public Programmeur BDDRequestByID(int id){
+        /*
+        * Function to query in database by id
+        * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
+        */
+        
+        String query = "SELECT * FROM PROGRAMMEUR where id= $" + id;
+        Programmeur prog = BDDQuery(query);
+        return prog;
+    }
+    
+    public Programmeur BDDQuery(String query)
+    {
+        /*
+        * We use a generic function for create queries to the database, and return the programmeur
+        */
         Programmeur prog = new Programmeur();
         try {
-        rs = stmnt.executeQuery("SELECT * FROM PROGRAMMEUR where id= $id");
+        rs = st.executeQuery(query);
             while(rs.next()){
                 prog.setNom(rs.getString("NOM"));
                 prog.setPrenom(rs.getString("PRENOM"));
+                prog.setAdresse(rs.getString("ADRESSE"));
+                prog.setAnnNaissance(Integer.parseInt(rs.getString("ANNAISSANCE")));
+                prog.setHobby(rs.getString("HOBBY"));
+                prog.setPrime(Integer.parseInt(rs.getString("PRIME")));
+                prog.setPrime(Integer.parseInt(rs.getString("SALAIRE")));
+                prog.setPseudo(rs.getString("PSEUDO"));
+                prog.setResponsable(rs.getString("RESPONSABLE"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BDDMethods.class.getName()).log(Level.SEVERE, null, ex);
