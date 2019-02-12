@@ -146,7 +146,8 @@ public class Programmeur {
     @Override
     public String toString()
     {
-        return "Nom: " + this.nom + "\nPrénom: " + this.prenom 
+        return "Nom: " + this.nom
+                + "\nPrénom: " + this.prenom 
                 + "\nPseudo: " + this.pseudo
                 + "\nAdresse: " + this.adresse
                 + "\nHobby: " + this.hobby

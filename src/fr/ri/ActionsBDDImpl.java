@@ -157,7 +157,18 @@ public class ActionsBDDImpl implements ActionsBDD {
     @Override
     public void BDDAddProgrammeur(Programmeur prog)
     {
-        
+        /*
+        * TEMPLATE
+        * INSERT INTO PROGRAMMEUR(NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,ANNAISSANCE,SALAIRE,PRIME) VALUES
+        * ('Torvalds','Linus','2 avenue Linux Git','linuxroot','Didier Achvar','Salsa','1969','2170','50')
+        */
+        String query = "INSERT INTO PROGRAMMEUR(NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,ANNAISSANCE,SALAIRE,PRIME)" + 
+                " VALUE('" + prog.getPrenom() +"','" + prog.getNom()
+                + "','" + prog.getAdresse() +"','" + prog.getPseudo()
+                + "','" + prog.getResponsable() + "','" + prog.getHobby()
+                + "','" + prog.getAnnNaissance() +"','" + prog.getSalaire()
+                + "','" + prog.getPrime() + "')";
+        BDDQuery(query);
     }
     
     /**
