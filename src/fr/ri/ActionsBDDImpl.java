@@ -180,7 +180,4 @@ public class ActionsBDDImpl implements ActionsBDD {
     {
         
     }
-    
-  
-    
 }

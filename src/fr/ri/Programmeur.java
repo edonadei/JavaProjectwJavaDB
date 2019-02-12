@@ -138,7 +138,21 @@ public class Programmeur {
     public void setPrime(int prime) {
         this.prime = prime;
     }
-
     
-    
+    /**
+     * Surcharge du toString de base pour l'object programmeur
+     * @return 
+     */
+    @Override
+    public String toString()
+    {
+        return "Nom: " + this.nom + "\nPrénom: " + this.prenom 
+                + "\nPseudo: " + this.pseudo
+                + "\nAdresse: " + this.adresse
+                + "\nHobby: " + this.hobby
+                + "\nResponsable: " + this.responsable
+                + "\nAnnée de naissance: " + this.annNaissance
+                + "\nSalaire: " + this.salaire
+                + "\nPrime: " + this.prime;
+    }
 }
