@@ -137,10 +137,10 @@ public class ActionsBDDImpl implements ActionsBDD{
                 prog.setNom(rs.getString("NOM"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setAdresse(rs.getString("ADRESSE"));
-                prog.setAnnNaissance(rs.getString("ANNAISSANCE"));
+                prog.setAnnNaissance(Integer.parseInt(rs.getString("ANNAISSANCE")));
                 prog.setHobby(rs.getString("HOBBY"));
-                prog.setPrime(rs.getString("PRIME"));
-                prog.setPrime(rs.getString("SALAIRE"));
+                prog.setPrime(Float.parseFloat(rs.getString("PRIME")));
+                prog.setSalaire(Float.parseFloat(rs.getString("SALAIRE")));
                 prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
                 listOfProgrammeurs.add(prog);

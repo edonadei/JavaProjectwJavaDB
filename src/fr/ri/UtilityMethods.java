@@ -32,11 +32,11 @@ public class UtilityMethods {
         System.out.println("HOBBY:");
         prog.setHobby(sc.nextLine());
         System.out.println("ANNEE DE NAISSANCE:");
-        prog.setAnnNaissance(sc.nextLine());
+        prog.setAnnNaissance(Integer.parseInt(sc.nextLine()));
         System.out.println("SALAIRE:");
-        prog.setAnnNaissance(sc.nextLine());
+        prog.setSalaire(Float.parseFloat(sc.nextLine()));
         System.out.println("PRIME:");
-        prog.setAnnNaissance(sc.nextLine());
+        prog.setPrime(Float.parseFloat(sc.nextLine()));
         return prog;
     }
     
