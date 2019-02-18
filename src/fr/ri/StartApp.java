@@ -12,6 +12,7 @@ package fr.ri;
 public class StartApp {
     
     public static void main(String[] args) {
+        Fenetre sw = new Fenetre();
         ActionsBDDImpl bdd = new ActionsBDDImpl();
         UtilityMethods util = new UtilityMethods();
         util.printProgrammeurArrayList(bdd.BDDQueryAll());

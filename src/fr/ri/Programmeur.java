@@ -146,15 +146,15 @@ public class Programmeur {
     @Override
     public String toString()
     {
-        return "Nom: " + this.nom
-                + "\nPrénom: " + this.prenom 
-                + "\nPseudo: " + this.pseudo
-                + "\nAdresse: " + this.adresse
-                + "\nHobby: " + this.hobby
-                + "\nResponsable: " + this.responsable
-                + "\nAnnée de naissance: " + this.annNaissance
-                + "\nSalaire: " + this.salaire
-                + "\nPrime: " + this.prime
+        return "Nom: " + this.getNom()
+                + "\nPrénom: " + this.getPrenom()
+                + "\nPseudo: " + this.getPseudo()
+                + "\nAdresse: " + this.getAdresse()
+                + "\nHobby: " + this.getHobby()
+                + "\nResponsable: " + this.getResponsable()
+                + "\nAnnée de naissance: " + this.getAnnNaissance()
+                + "\nSalaire: " + this.getSalaire()
+                + "\nPrime: " + this.getPrime()
                 + "\n";
     }
 }
