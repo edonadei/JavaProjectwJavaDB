@@ -15,6 +15,7 @@ public class StartApp {
         Fenetre sw = new Fenetre();
         ActionsBDDImpl bdd = new ActionsBDDImpl();
         UtilityMethods util = new UtilityMethods();
+        Fenetre wd = new Fenetre();
         util.printProgrammeurArrayList(bdd.BDDQueryAll());
         //bdd.BDDDeleteProgrammeur(14);
     }
