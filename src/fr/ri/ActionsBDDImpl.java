@@ -227,6 +227,6 @@ public class ActionsBDDImpl implements ActionsBDD{
         
         String query = "DELETE FROM PROGRAMMEUR " + 
                 "WHERE id =" + id;
-        BDDQuery(query);
+        BDDQueryUpdate(query);
     }
 }

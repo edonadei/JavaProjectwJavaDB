@@ -15,6 +15,7 @@ public class StartApp {
         ActionsBDDImpl bdd = new ActionsBDDImpl();
         UtilityMethods util = new UtilityMethods();
         util.printProgrammeurArrayList(bdd.BDDQueryAll());
+        //bdd.BDDDeleteProgrammeur(14);
     }
     
 }
