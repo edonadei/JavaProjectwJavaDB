@@ -17,9 +17,9 @@ public class Programmeur {
     private String pseudo;
     private String responsable;
     private String hobby;
-    private int annNaissance;
-    private int salaire;
-    private int prime;
+    private String annNaissance;
+    private String salaire;
+    private String prime;
     /*
     "ID" INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 	"NOM" VARCHAR(35),
@@ -33,7 +33,7 @@ public class Programmeur {
 	"PRIME" VARCHAR(10),
     */
 
-    public Programmeur(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, int salaire, int prime) {
+    public Programmeur(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, String annNaissance, String salaire, String prime) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -45,7 +45,7 @@ public class Programmeur {
         this.prime = prime;
     }
 
-    public Programmeur(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, int salaire) {
+    public Programmeur(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, String annNaissance, String salaire) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -62,9 +62,9 @@ public class Programmeur {
         this.adresse = "RANDOM";
         this.pseudo = "RANDOM";
         this.responsable = "RANDOM";
-        this.annNaissance = 2000;
-        this.salaire = 0;
-        this.prime = 0;
+        this.annNaissance = "2000";
+        this.salaire = "0";
+        this.prime = "0";
     }
     
     public String getNom() {
@@ -115,27 +115,27 @@ public class Programmeur {
         this.hobby = hobby;
     }
 
-    public int getAnnNaissance() {
+    public String getAnnNaissance() {
         return annNaissance;
     }
 
-    public void setAnnNaissance(int annNaissance) {
+    public void setAnnNaissance(String annNaissance) {
         this.annNaissance = annNaissance;
     }
 
-    public int getSalaire() {
+    public String getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(int salaire) {
+    public void setSalaire(String salaire) {
         this.salaire = salaire;
     }
 
-    public int getPrime() {
+    public String getPrime() {
         return prime;
     }
 
-    public void setPrime(int prime) {
+    public void setPrime(String prime) {
         this.prime = prime;
     }
     

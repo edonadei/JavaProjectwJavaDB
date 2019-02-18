@@ -30,11 +30,11 @@ public class UtilityMethods {
         System.out.println("RESPONSABLE:");
         prog.setResponsable(sc.nextLine());
         System.out.println("ANNEE DE NAISSANCE:");
-        prog.setAnnNaissance(Integer.parseInt(sc.nextLine()));
+        prog.setAnnNaissance(sc.nextLine());
         System.out.println("SALAIRE:");
-        prog.setAnnNaissance(Integer.parseInt(sc.nextLine()));
+        prog.setAnnNaissance(sc.nextLine());
         System.out.println("PRIME:");
-        prog.setAnnNaissance(Integer.parseInt(sc.nextLine()));
+        prog.setAnnNaissance(sc.nextLine());
         return prog;
     }
     
