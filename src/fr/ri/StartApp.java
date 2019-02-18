@@ -21,35 +21,7 @@ import java.util.logging.Logger;
 public class StartApp {
     
     public static void main(String[] args) {
-        try {
 
-            Connection dbConn = DriverManager.getConnection("jdbc:derby://localhost:1527/RI_L3_JAVA","adm","adm");
-            Statement stmnt = dbConn.createStatement();
-            ResultSet rt = stmnt.executeQuery("SELECT NOM,PRENOM,PSEUDO from PROGRAMMEUR");
-            while(rt.next())
-            {
-                Programmeur prog = new Programmeur();
-                Menu menu = new Menu();
-                
-                
-                
-                System.out.println(menu.choisir());       //C'est un test
-                System.out.println("STOP");
-                
-                
-                prog.setNom(rt.getString("NOM"));
-                prog.setPrenom(rt.getString("PRENOM"));
-                
-                System.out.println(prog.getNom());
-                System.out.println(prog.getPrenom());
-               
-            }
-            
-            
-        } catch (SQLException ex) {
-            System.out.println("ERREUR SQL");
-            Logger.getLogger(StartApp.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     
