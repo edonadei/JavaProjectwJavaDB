@@ -9,10 +9,12 @@ package fr.ri;
  *
  * @author Emrick-PC-Portable
  */
-public class StartApp {
-    
-    public static void main(String[] args) {
-        
-    }
-    
+import java.awt.Graphics;
+import javax.swing.JPanel;
+ 
+public class Panneau extends JPanel { 
+  @Override
+  public void paintComponent(Graphics g){
+    g.fillOval(20, 20, 75, 75);
+  }               
 }
