@@ -193,7 +193,7 @@ public class ActionsBDDImpl implements ActionsBDD{
                 + "','" + prog.getResponsable() + "','" + prog.getHobby()
                 + "','" + prog.getAnnNaissance() +"','" + prog.getSalaire()
                 + "','" + prog.getPrime() + "')";
-        BDDQuery(query);
+        BDDQueryUpdate(query);
     }
     
     /**
