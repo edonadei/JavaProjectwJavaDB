@@ -112,6 +112,15 @@ public class ActionsBDDImpl implements ActionsBDD{
         }
     }
     
+    public void BDDQueryUpdate(String query)
+    {
+        try {
+        st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Generic query to the database, will return the programmer from a dataSet
      * @param query
@@ -128,10 +137,10 @@ public class ActionsBDDImpl implements ActionsBDD{
                 prog.setNom(rs.getString("NOM"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setAdresse(rs.getString("ADRESSE"));
-                prog.setAnnNaissance(Integer.parseInt(rs.getString("ANNAISSANCE")));
+                prog.setAnnNaissance(rs.getString("ANNAISSANCE"));
                 prog.setHobby(rs.getString("HOBBY"));
-                prog.setPrime(Integer.parseInt(rs.getString("PRIME")));
-                prog.setPrime(Integer.parseInt(rs.getString("SALAIRE")));
+                prog.setPrime(rs.getString("PRIME"));
+                prog.setPrime(rs.getString("SALAIRE"));
                 prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
                 listOfProgrammeurs.add(prog);
@@ -201,7 +210,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         */
         
         String query = "UPDATE PROGRAMMEUR SET " + champ +" = '" + valeur + "' WHERE id ="+ id;
-        BDDQuery(query);
+        BDDQueryUpdate(query);
     }
     
     /**

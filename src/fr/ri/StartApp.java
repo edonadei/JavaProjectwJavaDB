@@ -12,10 +12,11 @@ package fr.ri;
 public class StartApp {
     
     public static void main(String[] args) {
+
+        
         ActionsBDDImpl bdd = new ActionsBDDImpl();
         UtilityMethods util = new UtilityMethods();
         util.printProgrammeurArrayList(bdd.BDDQueryAll());
     }
-    
     
 }
