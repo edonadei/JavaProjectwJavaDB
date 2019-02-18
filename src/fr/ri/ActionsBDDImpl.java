@@ -135,6 +135,7 @@ public class ActionsBDDImpl implements ActionsBDD{
                 prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
                 listOfProgrammeurs.add(prog);
+                prog.toString();
             }
         } catch (SQLException ex) {
             Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +150,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
         */
         
-        String query = "SELECT * FROM PROGRAMMEUR where id= $" + id;
+        String query = "SELECT * FROM PROGRAMMEUR where ID = " + id;
         ArrayList<Programmeur> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
         return listOfProgrammeurs;
     }
