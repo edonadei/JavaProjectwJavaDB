@@ -112,6 +112,15 @@ public class ActionsBDDImpl implements ActionsBDD{
         }
     }
     
+    public void BDDQueryUpdate(String query)
+    {
+        try {
+        st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Generic query to the database, will return the programmer from a dataSet
      * @param query
@@ -135,6 +144,7 @@ public class ActionsBDDImpl implements ActionsBDD{
                 prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
                 listOfProgrammeurs.add(prog);
+                prog.toString();
             }
         } catch (SQLException ex) {
             Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +159,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
         */
         
-        String query = "SELECT * FROM PROGRAMMEUR where id= $" + id;
+        String query = "SELECT * FROM PROGRAMMEUR where ID = " + id;
         ArrayList<Programmeur> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
         return listOfProgrammeurs;
     }
@@ -190,7 +200,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         */
         
         String query = "UPDATE PROGRAMMEUR SET " + champ +" = '" + valeur + "' WHERE id ="+ id;
-        BDDQuery(query);
+        BDDQueryUpdate(query);
     }
     
     /**
