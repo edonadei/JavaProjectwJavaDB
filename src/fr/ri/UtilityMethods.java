@@ -29,6 +29,8 @@ public class UtilityMethods {
         prog.setPseudo(sc.nextLine());
         System.out.println("RESPONSABLE:");
         prog.setResponsable(sc.nextLine());
+        System.out.println("HOBBY:");
+        prog.setHobby(sc.nextLine());
         System.out.println("ANNEE DE NAISSANCE:");
         prog.setAnnNaissance(sc.nextLine());
         System.out.println("SALAIRE:");
