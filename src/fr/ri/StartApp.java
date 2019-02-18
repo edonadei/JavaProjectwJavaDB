@@ -12,12 +12,10 @@ package fr.ri;
 public class StartApp {
     
     public static void main(String[] args) {
-        Fenetre sw = new Fenetre();
-        ActionsBDDImpl bdd = new ActionsBDDImpl();
-        UtilityMethods util = new UtilityMethods();
-        Fenetre wd = new Fenetre();
-        util.printProgrammeurArrayList(bdd.BDDQueryAll());
-        //bdd.BDDDeleteProgrammeur(14);
+        
+        Menu menu = new Menu();
+        
+        menu.boucle();
     }
     
 }
