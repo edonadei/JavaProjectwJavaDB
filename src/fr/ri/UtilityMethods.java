@@ -56,4 +56,36 @@ public class UtilityMethods {
             }
         }
     }
+    
+    /**
+     * Demande à l'utilisateur de rentrer un ID
+     * @return 
+     */
+    public int askId(){
+        
+        Scanner sc = new Scanner(System.in);
+        int idInt;
+        String id;
+        
+        System.out.println("Quel est l'ID ?");
+        
+        id = sc.nextLine();     //On recupere la saisie de l'utilisateur 
+        idInt = Integer.parseInt(id);     //On transforme le string en integer
+        
+        return idInt;
+        
+    }
+    
+    public String askChamp(){
+        
+        Scanner sc = new Scanner(System.in);    //Variable qui permet de recuperer une saisie
+        String champ;
+        
+    System.out.println("Quelle est la nouvelle valeur du champ ?");
+        
+        champ = sc.nextLine();     //On recupere la saisie de l'utilisateur 
+                
+        return champ;   //On retourne la valeur que l'utilisateur a rentre
+        
+    }
 }
