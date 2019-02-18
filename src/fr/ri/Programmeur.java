@@ -154,6 +154,7 @@ public class Programmeur {
                 + "\nResponsable: " + this.responsable
                 + "\nAnnée de naissance: " + this.annNaissance
                 + "\nSalaire: " + this.salaire
-                + "\nPrime: " + this.prime;
+                + "\nPrime: " + this.prime
+                + "\n";
     }
 }
