@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.ri;
 
 import java.sql.DriverManager;
@@ -14,10 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.derby.client.am.Connection;
 
-/**
- *
- * @author jeromecoffin
- */
 public class ActionsBDDImpl implements ActionsBDD{
     
     private String bdd_IP;
@@ -124,16 +115,16 @@ public class ActionsBDDImpl implements ActionsBDD{
     /**
      * Generic query to the database, will return the programmer from a dataSet
      * @param query
-     * @return Programmeur
+     * @return ProgrammeurBean
      */
     @Override
-    public ArrayList<Programmeur> BDDQueryAndReturnProgrammer(String query)
+    public ArrayList<ProgrammeurBean> BDDQueryAndReturnProgrammer(String query)
     {
-        ArrayList<Programmeur> listOfProgrammeurs = new ArrayList<>();
+        ArrayList<ProgrammeurBean> listOfProgrammeurs = new ArrayList<>();
         try {
         rs = st.executeQuery(query);
             while(rs.next()){
-                Programmeur prog = new Programmeur();
+                ProgrammeurBean prog = new ProgrammeurBean();
                 prog.setNom(rs.getString("NOM"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setAdresse(rs.getString("ADRESSE"));
@@ -152,25 +143,25 @@ public class ActionsBDDImpl implements ActionsBDD{
     }
     
         @Override
-    public ArrayList<Programmeur> BDDQueryByID(int id){
+    public ArrayList<ProgrammeurBean> BDDQueryByID(int id){
         /*
         * Function to query in database by id
         * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
         */
         
         String query = "SELECT * FROM PROGRAMMEUR where ID = " + id;
-        ArrayList<Programmeur> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
+        ArrayList<ProgrammeurBean> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
         return listOfProgrammeurs;
     }
     
-    public ArrayList<Programmeur> BDDQueryAll(){
+    public ArrayList<ProgrammeurBean> BDDQueryAll(){
         /*
         * Function to query in database by id
         * Template query "SELECT * FROM PROGRAMMEUR where id= $id"
         */
         
         String query = "SELECT * FROM PROGRAMMEUR";
-        ArrayList<Programmeur> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
+        ArrayList<ProgrammeurBean> listOfProgrammeurs = BDDQueryAndReturnProgrammer(query);
         return listOfProgrammeurs;
     }
     
@@ -179,7 +170,7 @@ public class ActionsBDDImpl implements ActionsBDD{
      * @param prog 
      */
     @Override
-    public void BDDAddProgrammeur(Programmeur prog)
+    public void BDDAddProgrammeur(ProgrammeurBean prog)
     {
         /*
         * TEMPLATE

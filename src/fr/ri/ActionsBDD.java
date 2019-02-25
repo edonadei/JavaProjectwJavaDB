@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.ri;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Emrick-PC-Portable
- */
 public interface ActionsBDD {
 
     /**
      * Ajout d'un programmeur dans la base de données
      * @param prog
      */
-    void BDDAddProgrammeur(Programmeur prog);
+    void BDDAddProgrammeur(ProgrammeurBean prog);
 
     /**
      * Supprimer un programmeur dans la base de données en le choisissant par ID
@@ -42,16 +33,16 @@ public interface ActionsBDD {
     /**
      * Generic query to the database, will return the programmer from a dataSet
      * @param query
-     * @return Programmeur
+     * @return ProgrammeurBean
      */
-    ArrayList<Programmeur> BDDQueryAndReturnProgrammer(String query);
+    ArrayList<ProgrammeurBean> BDDQueryAndReturnProgrammer(String query);
 
     /**
      * Query in JDBC with an ID, and return the programmeur
      * @param id
-     * @return Programmeur
+     * @return ProgrammeurBean
      */
-    ArrayList<Programmeur> BDDQueryByID(int id);
+    ArrayList<ProgrammeurBean> BDDQueryByID(int id);
 
     String getBdd_IP();
 

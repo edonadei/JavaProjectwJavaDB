@@ -1,27 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.ri;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Camille
- */
 public class Menu {
     
     private int choix;
     private ActionsBDDImpl bdd = new ActionsBDDImpl();
     private UtilityMethods util = new UtilityMethods();
 
-    public Menu() {         //Constructeur de base du Menu
+    /**
+     * Constructeur par défaut du menu
+     */
+    public Menu() {  
         this.choix = 0;
     }
 
-    public int getChoix() {         //M�thode qui permet d'avoir le choix de l'utilisateur
+    public int getChoix() {    
         return choix;
     }
 

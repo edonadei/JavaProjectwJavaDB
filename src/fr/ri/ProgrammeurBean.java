@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.ri;
 
-/**
- *
- * @author Emrick-PC-Portable
- */
-public class Programmeur {
+public class ProgrammeurBean {
   
     private String nom;
     private String prenom;
@@ -33,7 +24,7 @@ public class Programmeur {
 	"PRIME" VARCHAR(10),
     */
 
-    public Programmeur(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, float salaire, float prime) {
+    public ProgrammeurBean(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, float salaire, float prime) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -45,7 +36,7 @@ public class Programmeur {
         this.prime = prime;
     }
 
-    public Programmeur(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, float salaire) {
+    public ProgrammeurBean(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, float salaire) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -56,7 +47,7 @@ public class Programmeur {
         this.salaire = salaire;
     }
 
-    public Programmeur() {
+    public ProgrammeurBean() {
         this.nom = "RANDOM";
         this.prenom = "RANDOM";
         this.adresse = "RANDOM";
