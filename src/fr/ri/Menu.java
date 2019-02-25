@@ -86,7 +86,7 @@ public class Menu {
                     System.out.println("Le programmeur a ete ajoute");
                     break;
                 
-            case 5 : bdd.BDDModifierChamp("SALAIRE", askId(), askChamp());
+            case 5 : bdd.BDDModifierSalaire(askId(), askSalaire());
                     System.out.println("Le champ a ete modifie");
                     break;
                 
@@ -180,16 +180,13 @@ public class Menu {
      * Demande à l'utilisateur quelle valeur il veut allouer au champ
      * @return 
      */
-    public String askChamp(){
+    public Float askSalaire(){
         
         Scanner sc = new Scanner(System.in);    //Variable qui permet de recuperer une saisie
         String champ;
-        
-    System.out.println("Quelle est la nouvelle valeur du champ ?");
-        
-        champ = sc.nextLine();     //On recupere la saisie de l'utilisateur 
-                
-        return champ;   //On retourne la valeur que l'utilisateur a rentre
+        System.out.println("Quelle est la nouvelle valeur du champ ?");
+        champ = sc.nextLine();     //On recupere la saisie de l'utilisateur  
+        return Float.parseFloat(champ);   //On retourne la valeur que l'utilisateur a rentre
         
     }
 

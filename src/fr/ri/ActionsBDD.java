@@ -26,12 +26,11 @@ public interface ActionsBDD {
     void BDDDeleteProgrammeur(int id);
 
     /**
-     * Modification d'un champ d'un programmeur en base de données en choissant par ID
-     * @param champ
+     * Modification du salaire d'un programmeur en base de données en choissant par ID
      * @param id
      * @param valeur
      */
-    void BDDModifierChamp(String champ, int id, String valeur);
+    void BDDModifierSalaire(int id, Float valeur);
 
     /**
      * Query in JDBC with an ID, and return the programmeur
@@ -54,8 +53,6 @@ public interface ActionsBDD {
     ArrayList<ProgrammeurBean> BDDQueryAndReturnProgrammer(String query);
 
     ArrayList<ProgrammeurBean> BDDQueryByID(int id);
-
-    void BDDQueryUpdate(String query);
 
     String getBdd_IP();
 

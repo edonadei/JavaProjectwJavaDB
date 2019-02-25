@@ -1,9 +1,11 @@
 package fr.ri;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +18,7 @@ public class ActionsBDDImpl implements ActionsBDD{
     private String bdd_pwd;
     private Connection dbconn;
     private Statement st;
+    private PreparedStatement pst;
     private ResultSet rs;
 
     @Override
@@ -61,7 +64,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         
         try {
             this.dbconn = (Connection) DriverManager.getConnection(bdd_IP,bdd_id,bdd_pwd); 
-        this.st = dbconn.createStatement();
+            this.st = dbconn.createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,16 +101,6 @@ public class ActionsBDDImpl implements ActionsBDD{
     {
         try {
         rs = st.executeQuery(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @Override
-    public void BDDQueryUpdate(String query)
-    {
-        try {
-        st.executeUpdate(query);
         } catch (SQLException ex) {
             Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -181,29 +174,45 @@ public class ActionsBDDImpl implements ActionsBDD{
         */
         
         String query = "INSERT INTO PROGRAMMEUR(NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,ANNAISSANCE,SALAIRE,PRIME)" + 
-                " VALUES('" + prog.getPrenom() +"','" + prog.getNom()
-                + "','" + prog.getAdresse() +"','" + prog.getPseudo()
-                + "','" + prog.getResponsable() + "','" + prog.getHobby()
-                + "','" + prog.getAnnNaissance() +"','" + prog.getSalaire()
-                + "','" + prog.getPrime() + "')";
-        BDDQueryUpdate(query);
+                " VALUES(?,?,?,?,?,?,?,?,?)";
+        try {
+            pst = dbconn.prepareStatement(query);
+            pst.setObject(1, prog.getPrenom(),Types.VARCHAR);
+            pst.setObject(2, prog.getNom(),Types.VARCHAR);
+            pst.setObject(3, prog.getAdresse(),Types.VARCHAR);
+            pst.setObject(4, prog.getPseudo(),Types.VARCHAR);
+            pst.setObject(5, prog.getResponsable(),Types.VARCHAR);
+            pst.setObject(6, prog.getHobby(), Types.VARCHAR);
+            pst.setObject(7, prog.getAnnNaissance(), Types.INTEGER);
+            pst.setObject(8, prog.getSalaire(),Types.FLOAT);
+            pst.setObject(9, prog.getPrime(),Types.FLOAT);
+            pst.executeUpdate(); 
+        } catch (SQLException ex) {
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
-     * Modification d'un champ d'un programmeur en base de données en choissant par ID
-     * @param champ
+     * Modification du salaire d'un programmeur en base de données en choissant par ID
      * @param id 
      * @param valeur 
      */
     @Override
-    public void BDDModifierChamp(String champ, int id, String valeur)
+    public void BDDModifierSalaire(int id, Float valeur)
     {
         /*
         Template: UPDATE PROGRAMMEUR SET PRIME = '11' WHERE id =2 ;
         */
         
-        String query = "UPDATE PROGRAMMEUR SET " + champ +" = '" + valeur + "' WHERE id ="+ id;
-        BDDQueryUpdate(query);
+        String query = "UPDATE PROGRAMMEUR SET SALAIRE = ? WHERE id = ?";
+        try {
+            pst = dbconn.prepareStatement(query);
+            pst.setObject(1,valeur,Types.FLOAT);
+            pst.setObject(2,id,Types.INTEGER);
+            pst.executeUpdate(); 
+        } catch (SQLException ex) {
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -219,7 +228,14 @@ public class ActionsBDDImpl implements ActionsBDD{
         */
         
         String query = "DELETE FROM PROGRAMMEUR " + 
-                "WHERE id =" + id;
-        BDDQueryUpdate(query);
+                "WHERE id = ?";
+        try {
+            pst = dbconn.prepareStatement(query);
+            pst.setObject(1,id,Types.INTEGER);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ActionsBDDImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
     }
 }
