@@ -68,7 +68,7 @@ public class ActionsBDDImpl implements ActionsBDD{
     }
 
     /**
-     * Default constructor, with local IP for JDBC
+     * Constructeur par défaut, avec l'IP locale de JDBC
      */
     public ActionsBDDImpl() {
         this.bdd_IP = "jdbc:derby://localhost:1527/RI_L3_JAVA";
@@ -103,6 +103,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         }
     }
     
+    @Override
     public void BDDQueryUpdate(String query)
     {
         try {
@@ -154,6 +155,7 @@ public class ActionsBDDImpl implements ActionsBDD{
         return listOfProgrammeurs;
     }
     
+    @Override
     public ArrayList<ProgrammeurBean> BDDQueryAll(){
         /*
         * Function to query in database by id

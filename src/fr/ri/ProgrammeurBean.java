@@ -12,7 +12,7 @@ public class ProgrammeurBean {
     private float salaire;
     private float prime;
     /*
-    "ID" INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    TEMPLATE:
 	"NOM" VARCHAR(35),
 	"PRENOM" VARCHAR(35),
  	"ADRESSE" VARCHAR(150),
@@ -24,6 +24,18 @@ public class ProgrammeurBean {
 	"PRIME" VARCHAR(10),
     */
 
+    /**
+     * Constructeur avec tous les paramètres en argument
+     * @param nom
+     * @param prenom
+     * @param adresse
+     * @param pseudo
+     * @param responsable
+     * @param hobby
+     * @param annNaissance
+     * @param salaire
+     * @param prime 
+     */
     public ProgrammeurBean(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, float salaire, float prime) {
         this.nom = nom;
         this.prenom = prenom;
@@ -35,7 +47,18 @@ public class ProgrammeurBean {
         this.salaire = salaire;
         this.prime = prime;
     }
-
+    
+    /**
+     * Constructeur avec tous les paramètres en argument sans prime
+     * @param nom
+     * @param prenom
+     * @param adresse
+     * @param pseudo
+     * @param responsable
+     * @param hobby
+     * @param annNaissance
+     * @param salaire 
+     */
     public ProgrammeurBean(String nom, String prenom, String adresse, String pseudo, String responsable, String hobby, int annNaissance, float salaire) {
         this.nom = nom;
         this.prenom = prenom;
@@ -47,6 +70,9 @@ public class ProgrammeurBean {
         this.salaire = salaire;
     }
 
+    /**
+     * Constructeur par défaut
+     */
     public ProgrammeurBean() {
         this.nom = "RANDOM";
         this.prenom = "RANDOM";
